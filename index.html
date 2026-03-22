@@ -143,9 +143,26 @@
     .star:nth-child(6) { font-size: 1.8rem; top: 38%;  animation: floatStar 22s linear 4s infinite; }
     .star:nth-child(7) { font-size: 1.2rem; top: 58%;  animation: floatStar 15s linear 11s infinite; }
     .star:nth-child(8) { font-size: 2.2rem; top: 18%;  animation: floatStar 19s linear 7s infinite; }
+
+    /* Clock */
+    .clock {
+      position: relative;
+      z-index: 1;
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 1rem;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      letter-spacing: 1.5px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 50px;
+      padding: 8px 22px;
+      backdrop-filter: blur(8px);
+      text-shadow: 0 0 12px rgba(200, 150, 255, 0.5);
+    }
   </style>
 </head>
 <body>
+  <div id="clock" class="clock"></div>
   <div class="stars">
     <div class="star">★</div>
     <div class="star">✦</div>
@@ -187,6 +204,7 @@
     </div>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
   <script>
     class WeatherWidget {
       constructor() {
@@ -350,6 +368,35 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => { new WeatherWidget(); });
+
+    function updateClock() {
+      const now = new Date();
+      const timeStr = now.toLocaleTimeString('en-US', {
+        timeZone: 'America/New_York',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: true
+      });
+      const dateStr = now.toLocaleDateString('en-US', {
+        timeZone: 'America/New_York',
+        weekday: 'short',
+        month: 'short',
+        day: 'numeric'
+      });
+      const currentMinute = now.toLocaleString('en-US', { timeZone: 'America/New_York', minute: '2-digit' });
+      if (updateClock._lastMinute !== undefined && updateClock._lastMinute !== currentMinute) {
+        const clockEl = document.getElementById('clock');
+        const rect = clockEl.getBoundingClientRect();
+        const x = (rect.left + rect.width / 2) / window.innerWidth;
+        const y = (rect.top + rect.height / 2) / window.innerHeight;
+        confetti({ particleCount: 80, spread: 90, origin: { x, y }, colors: ['#b388ff', '#ffffff', '#c084fc', '#6dd5fa', '#ffd6ff'] });
+      }
+      updateClock._lastMinute = currentMinute;
+      document.getElementById('clock').textContent = `${dateStr}  •  ${timeStr} ET`;
+    }
+    updateClock();
+    setInterval(updateClock, 1000);
   </script>
 </body>
 </html>
