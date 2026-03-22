@@ -3,7 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Homepage</title>
+  <title>Jenna Brown | Hello Slalomers</title>
+
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Jenna Brown | Hello Slalomers" />
+  <meta property="og:description" content="Welcome to my page — say hello!" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="_8507492.jpg" />
+
+  <link rel="stylesheet" href="weather.css" />
   <style>
     * {
       margin: 0;
@@ -14,8 +28,11 @@
     body {
       min-height: 100vh;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
+      gap: 24px;
+      padding: 40px 20px;
       background: linear-gradient(135deg, #2d0057 0%, #6a0dad 40%, #c084fc 100%);
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
@@ -95,126 +112,7 @@
       filter: brightness(0.92);
     }
 
-    /* Weather Widget Styles */
-    .weather-widget {
-      background: linear-gradient(135deg, #74b9ff, #0984e3);
-      color: white;
-      padding: 20px;
-      border-radius: 15px;
-      max-width: 350px;
-      margin: 20px auto;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      position: relative;
-      z-index: 1;
-    }
-    .weather-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 15px;
-    }
-    .weather-header h3 {
-      margin: 0;
-      font-size: 1.2em;
-      font-weight: 600;
-    }
-    .refresh-btn {
-      background: rgba(255, 255, 255, 0.2);
-      border: none;
-      color: white;
-      padding: 8px 12px;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 16px;
-      transition: background 0.3s ease;
-    }
-    .refresh-btn:hover {
-      background: rgba(255, 255, 255, 0.3);
-    }
-    .weather-content {
-      min-height: 120px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    .weather-loading {
-      text-align: center;
-    }
-    .loading-spinner {
-      width: 30px;
-      height: 30px;
-      border: 3px solid rgba(255, 255, 255, 0.3);
-      border-top: 3px solid white;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-      margin: 0 auto 10px;
-    }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-    .weather-info {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 15px;
-      align-items: center;
-    }
-    .weather-main {
-      text-align: center;
-    }
-    .temperature {
-      font-size: 2.5em;
-      font-weight: bold;
-      margin: 0;
-    }
-    .weather-description {
-      font-size: 0.9em;
-      opacity: 0.9;
-      margin: 5px 0;
-    }
-    .weather-details {
-      font-size: 0.85em;
-    }
-    .weather-details div {
-      margin: 5px 0;
-      display: flex;
-      justify-content: space-between;
-    }
-    .location-fallback {
-      text-align: center;
-      margin-top: 15px;
-    }
-    .location-fallback input {
-      padding: 8px 12px;
-      border: none;
-      border-radius: 5px;
-      margin: 10px 5px;
-      width: 150px;
-    }
-    .location-fallback button {
-      padding: 8px 15px;
-      background: rgba(255, 255, 255, 0.2);
-      border: none;
-      color: white;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .error-message {
-      text-align: center;
-      color: #ffcccb;
-      font-size: 0.9em;
-    }
-    @media (max-width: 480px) {
-      .weather-widget {
-        margin: 10px;
-        max-width: none;
-      }
-      .weather-info {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-    }
+
 
     /* Stars */
     .stars {
