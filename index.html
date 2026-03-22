@@ -30,6 +30,8 @@
       max-width: 420px;
       width: 90%;
       box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+      position: relative;
+      z-index: 1;
     }
 
     .profile-photo {
@@ -68,25 +70,77 @@
       cursor: pointer;
       letter-spacing: 0.3px;
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      transition: background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    @keyframes wiggle {
+      0%   { transform: rotate(0deg); }
+      15%  { transform: rotate(-6deg); }
+      30%  { transform: rotate(6deg); }
+      45%  { transform: rotate(-4deg); }
+      60%  { transform: rotate(4deg); }
+      75%  { transform: rotate(-2deg); }
+      90%  { transform: rotate(2deg); }
+      100% { transform: rotate(0deg); }
     }
 
     .contact-btn:hover {
-      transform: translateY(-2px);
+      background: linear-gradient(135deg, #1a73e8, #6dd5fa);
+      color: #ffffff;
       box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
+      animation: wiggle 0.5s ease;
     }
 
     .contact-btn:active {
-      transform: translateY(0);
+      filter: brightness(0.92);
     }
+
+    /* Stars */
+    .stars {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .star {
+      position: absolute;
+      color: rgba(255, 255, 255, 0.3);
+      line-height: 1;
+      user-select: none;
+    }
+
+    @keyframes floatStar {
+      from { transform: translateX(-120px); }
+      to   { transform: translateX(110vw); }
+    }
+
+    .star:nth-child(1) { font-size: 2rem;   top: 10%;  animation: floatStar 14s linear infinite; }
+    .star:nth-child(2) { font-size: 1rem;   top: 25%;  animation: floatStar 20s linear 3s infinite; }
+    .star:nth-child(3) { font-size: 3rem;   top: 50%;  animation: floatStar 12s linear 6s infinite; }
+    .star:nth-child(4) { font-size: 1.4rem; top: 68%;  animation: floatStar 18s linear 1s infinite; }
+    .star:nth-child(5) { font-size: 2.5rem; top: 80%;  animation: floatStar 16s linear 9s infinite; }
+    .star:nth-child(6) { font-size: 1.8rem; top: 38%;  animation: floatStar 22s linear 4s infinite; }
+    .star:nth-child(7) { font-size: 1.2rem; top: 58%;  animation: floatStar 15s linear 11s infinite; }
+    .star:nth-child(8) { font-size: 2.2rem; top: 18%;  animation: floatStar 19s linear 7s infinite; }
   </style>
 </head>
 <body>
+  <div class="stars">
+    <div class="star">★</div>
+    <div class="star">✦</div>
+    <div class="star">★</div>
+    <div class="star">✧</div>
+    <div class="star">★</div>
+    <div class="star">✦</div>
+    <div class="star">✧</div>
+    <div class="star">★</div>
+  </div>
   <div class="card">
-    <!-- Replace 'photo.jpg' with the path to your actual photo -->
     <img
       class="profile-photo"
-      src="photo.jpg"
+      src="_8507492.jpg"
       alt="Photo of me"
       onerror="this.src='https://placehold.co/140x140/c084fc/ffffff?text=Me'"
     />
