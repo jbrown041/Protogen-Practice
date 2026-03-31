@@ -228,7 +228,7 @@
     />
     <h1>Hello Slalomers!</h1>
     <p class="subtitle">Welcome to my page.</p>
-    <button class="contact-btn">Contact Me</button>
+    <button class="contact-btn" id="serotonin-btn">Serotonin Boost</button>
   </div>
 
   <!-- Weather Widget Container -->
@@ -251,7 +251,14 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  <audio id="baby-laugh" src="baby-laugh.wav" preload="auto"></audio>
   <script>
+    document.getElementById('serotonin-btn').addEventListener('click', () => {
+      const audio = document.getElementById('baby-laugh');
+      audio.currentTime = 0;
+      audio.play();
+    });
+
     class WeatherWidget {
       constructor() {
         this.apiBase = 'https://api.open-meteo.com/v1';
